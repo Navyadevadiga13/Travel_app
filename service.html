@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Travel Explorer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary text-white p-3">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <a class="navbar-brand" href="index.html">Travel Explorer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item"><a class="nav-link" href="signin.html">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="services" class="container text-center py-5">
+        <h2>Our Services</h2>
+        <p>We offer a variety of travel services to make your journey unforgettable.</p>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <img src="flight.jpeg" alt="Flight Booking" class="img-fluid rounded">
+                <h4>Flight Booking</h4>
+                <p>Book flights easily at the best prices for your perfect trip.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="hotel.jpeg" alt="Hotel Booking" class="img-fluid rounded">
+                <h4>Hotel Booking</h4>
+                <p>Find the best hotel deals for a comfortable and luxurious stay.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="car.jpeg" alt="Car Rentals" class="img-fluid rounded">
+                <h4>Car Rentals</h4>
+                <p>Rent a car for easy and comfortable travel at your destination.</p>
+            </div>
+        </div>
+
+        <a href="#booking-form" class="btn btn-primary mt-4">Book Now</a>
+    </section>
+
+    <section id="booking-form" class="container py-5">
+        <h2 class="text-center">Book Your Trip</h2>
+        <p class="text-center">Fill out the form below to book your flights, hotels, or car rentals.</p>
+
+        <form id="bookingForm" class="mt-4">
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="serviceType" class="form-label">Select Service</label>
+                <select class="form-control" id="serviceType" required>
+                    <option value="">Choose a service</option>
+                    <option value="Flight Booking">Flight Booking</option>
+                    <option value="Hotel Booking">Hotel Booking</option>
+                    <option value="Car Rentals">Car Rentals</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Additional Requests</label>
+                <textarea class="form-control" id="message" rows="3" placeholder="Enter any special requests"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit Booking</button>
+        </form>
+    </section>
+
+    <footer class="bg-dark text-white text-center p-3">
+        <p>&copy; 2025 Travel Explorer. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bookingForm = document.getElementById("bookingForm");
+            const logoutBtn = document.getElementById("logoutBtn");
+        
+            if (bookingForm) {
+                bookingForm.addEventListener("submit", (event) => {
+                    event.preventDefault();
+                    
+                    const name = document.getElementById("fullName").value;
+                    const email = document.getElementById("email").value;
+                    const service = document.getElementById("serviceType").value;
+                    const date = document.getElementById("date").value;
+                    const message = document.getElementById("message").value;
+        
+                    if (!name || !email || !service || !date) {
+                        alert("Please fill in all required fields.");
+                        return;
+                    }
+        
+                    alert(`Booking Confirmed!\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nDate: ${date}\nMessage: ${message}`);
+                    bookingForm.reset();
+                });
+            }
+        
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    alert("You have been logged out.");
+                    window.location.href = "signin.html";
+                });
+            }
+        });
+        </script>
+</body>
+</html>

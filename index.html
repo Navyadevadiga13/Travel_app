@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Explorer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  <style>#home img,
+    #about img,
+    #services img {
+        width: 100%;
+        height: 250px; /* Set a uniform height */
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-collapse {
+                text-align: center;
+            }
+            #contact-form {
+                width: 100% !important;
+            }
+        }
+    </style>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header class="bg-primary text-white p-3">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <a class="navbar-brand" href="#">Travel Explorer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signin.html">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signin.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <section id="home" class="text-center p-5 bg-light">
+        <div class="container">
+            <h1 class="display-4">Discover Your Next Adventure</h1>
+            <p class="lead">Your journey begins here. Explore breathtaking destinations, cultural experiences, and adventure-packed getaways. Let us help you plan your perfect trip!</p>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <img src="bali.webp" alt="Bali, Indonesia" class="img-fluid rounded">
+                    <h3>Bali, Indonesia</h3>
+                    <p>A tropical paradise with stunning beaches and vibrant culture.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="swiss.jpeg" alt="Swiss Alps" class="img-fluid rounded">
+                    <h3>Swiss Alps, Switzerland</h3>
+                    <p>Perfect for nature lovers and adventure seekers.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="maldives.jpeg" alt="Maldives" class="img-fluid rounded">
+                    <h3>Maldives</h3>
+                    <p>Luxury resorts, crystal-clear waters, and serene beaches.</p>
+                </div>
+            </div>
+            <a href="#services" class="btn btn-primary mt-4">Explore Now</a>
+        </div>
+    </section>
+    
+    
+
+
+    <section id="about" class="container text-center py-5">
+        <h2>About Us</h2>
+        <p>
+            Welcome to <strong>Travel Explorer</strong>, your gateway to unforgettable adventures!  
+            We are passionate about helping travelers discover the world's most breathtaking  
+            destinations with ease and comfort. Whether you're seeking adventure, relaxation,  
+            or cultural experiences, we tailor the perfect trip just for you.
+        </p>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <img src="team.webp" alt="Our Team" class="img-fluid rounded">
+                <h4>Expert Team</h4>
+                <p>Our dedicated travel experts ensure a seamless experience for every journey.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="customer.jpg" alt="Happy Customers" class="img-fluid rounded">
+                <h4>Happy Customers</h4>
+                <p>We take pride in making travel dreams come true for thousands of customers.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="worldwide.jpeg" alt="Global Destinations" class="img-fluid rounded">
+                <h4>Worldwide Destinations</h4>
+                <p>Explore top destinations across the globe with our exclusive travel deals.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="container text-center py-5">
+        <h2>Our Services</h2>
+        <p>We offer a variety of travel services to make your journey unforgettable.</p>
+    
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <img src="flight.jpeg" alt="Flight Booking" class="img-fluid rounded">
+                <h4>Flight Booking</h4>
+                <p>Book flights easily at the best prices for your perfect trip.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="hotel.jpeg" alt="Hotel Booking" class="img-fluid rounded">
+                <h4>Hotel Booking</h4>
+                <p>Find the best hotel deals for a comfortable and luxurious stay.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="car.jpeg" alt="Car Rentals" class="img-fluid rounded">
+                <h4>Car Rentals</h4>
+                <p>Rent a car for easy and comfortable travel at your destination.</p>
+            </div>
+        </div>
+    
+        <a href="signin.html" class="btn btn-primary mt-4">Book Now</a>
+    </section>
+    
+
+    
+    
+    <section id="contact" class="container text-center py-5">
+        <h2>Contact Us</h2>
+        <form id="contact-form" class="mx-auto w-50">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+        <p id="success-message" class="text-success mt-3" style="display: none;">Form submitted successfully!</p>
+    </section>
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent actual form submission
+            document.getElementById("success-message").style.display = "block"; // Show success message
+            setTimeout(() => {
+                document.getElementById("success-message").style.display = "none"; // Hide message after 3 seconds
+            }, 3000);
+            this.reset(); // Optional: Reset the form fields
+        });
+    </script>
+    <footer class="bg-dark text-white text-center p-3">
+        <p>&copy; 2025 Travel Explorer. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

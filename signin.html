@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Travel Explorer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Background overlay effect */
+        .signin-body {
+            background-color: rgba(206, 72, 204, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Centered sign-in form */
+        .signin-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Sign-in card styling - Larger */
+        .signin-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            width: 450px;
+        }
+
+        /* Modal footer adjustments */
+        .modal-footer {
+            border-top: none;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body class="signin-body">
+    <div class="signin-container">
+        <div class="signin-card">
+            <h3 class="text-center">Sign In</h3>
+            <div class="modal-body">
+                <form id="signin-form">
+                    <div class="mb-3">
+                        <label for="signin-email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="signin-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signin-password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signin-password" placeholder="Enter your password" required>
+                    </div>
+                    <p id="signin-error" class="error-message"></p>
+                    <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="index.html" >Home</a>
+                <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a></p><br>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signup-form">
+                        <div class="mb-3">
+                            <label for="signup-name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="signup-name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="signup-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signup-password" placeholder="Create a password" required>
+                        </div>
+                        <p id="signup-error" class="error-message"></p>
+                        <button type="submit" class="btn btn-success w-100">Sign Up</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Already have an account? <a href="#" data-bs-dismiss="modal">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle Sign Up
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("signup-name").value.trim();
+            const email = document.getElementById("signup-email").value.trim();
+            const password = document.getElementById("signup-password").value.trim();
+            const errorElement = document.getElementById("signup-error");
+
+            // Retrieve existing users or initialize empty array
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if email already exists
+            const userExists = users.some(user => user.email === email);
+            if (userExists) {
+                errorElement.textContent = "Email already exists!";
+                return;
+            }
+
+            // Store user details
+            users.push({ name, email, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Signup successful! You can now sign in.");
+            document.getElementById("signup-form").reset();
+            errorElement.textContent = "";
+            bootstrap.Modal.getInstance(document.getElementById("signupModal")).hide();
+        });
+
+        // Handle Sign In
+        document.getElementById("signin-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById("signin-email").value.trim();
+            const password = document.getElementById("signin-password").value.trim();
+            const errorElement = document.getElementById("signin-error");
+
+            // Retrieve users from localStorage
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check credentials
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (!user) {
+                errorElement.textContent = "Invalid email or password!";
+            } else {
+                alert("Login successful!");
+                errorElement.textContent = "";
+                window.location.href = "service.html"; // Redirect to dashboard or home page
+            }
+        });
+    </script>
+</body>
+</html>
